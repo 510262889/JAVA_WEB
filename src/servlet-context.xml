@@ -21,6 +21,7 @@
     </beans:bean>
     <!-- 相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean -->  
     <annotation-driven />  
+    
     <!-- 注解controller所在的包，  扫描路径 -->  
     <context:component-scan base-package="com.springMvc.controller"/>  
 </beans:beans>  
