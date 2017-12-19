@@ -15,13 +15,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <!-- 返回数据解析。prefix：前缀， suffix：后缀 也就是配置views的目录-->  
+    <!-- spring访问的页面路径 -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
-        <beans:property name="prefix" value="/WebContent/jsp/" />  
-        <beans:property name="suffix" value=".jsp" />  
+        <beans:property name="prefix" value="/views/jsp/" />  
     </beans:bean>
     <!-- 相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean -->  
     <annotation-driven />  
     
+     <!-- 注解controller所在的包，  扫描路径 -->  
+    <context:component-scan base-package="com.springMvc.bean"/>  
     <!-- 注解controller所在的包，  扫描路径 -->  
     <context:component-scan base-package="com.springMvc.controller"/>  
+    <!-- 注解controller所在的包，  扫描路径 -->  
+    <context:component-scan base-package="com.springMvc.dao"/>  
 </beans:beans>  

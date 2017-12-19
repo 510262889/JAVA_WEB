@@ -7,19 +7,19 @@
     <!-- 注解所在的包，  扫描dao路径 -->  
     <context:component-scan base-package="com.springMvc.dao"/>  
     <!-- 注解所在的包，  扫描service路径 -->  
-    <context:component-scan base-package="com.springMvc.service"/>  
+    <context:component-scan base-package="com.springMvc.service"/> 
     <!-- 引入jdbc.properties -->  
     <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>  
     <!-- 配置一个数据源，用下dbcp连接池 -->  
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">  
         <!-- 用的mysql数据库，连接到数据库mydb（自己新建） -->  
-        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />  
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />  
+        <property name="driverClassName" value="${driver}" />  
+        <property name="url" value="${url}" />  
         <!-- 用户名密码，根据本地数据库自定义 -->  
-        <property name="username" value="sgccwn" />  
-        <property name="password" value="sgccwn" />  
+        <property name="username" value="${username}" />  
+        <property name="password" value="${password}" />  
     </bean>  
-      
+
     <!-- 定义jdbc模板 -->  
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
         <property name="dataSource" ref="dataSource" />  
@@ -42,7 +42,7 @@
         </property>  
         <property name="packagesToScan">  
             <list>  
-                <value>com.oscar999.work.model</value>  
+                <value>com.springMvc.bean</value>
             </list>  
         </property>  
     </bean>  
@@ -55,4 +55,6 @@
         <property name="sessionFactory" ref="sessionFactory" />  
     </bean>  
 
+	<!-- 引入log4j.properties -->  
+    <context:property-placeholder location="classpath:log4j.properties" ignore-unresolvable="true"/>  
 </beans>  
